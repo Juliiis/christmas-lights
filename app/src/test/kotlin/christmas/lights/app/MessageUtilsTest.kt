@@ -8,7 +8,13 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 
 class MessageUtilsTest {
-    @Test fun testGetMessage() {
-        assertEquals("Hello      World!", MessageUtils.getMessage())
+    @Test fun pepito123() {
+
+        var christmasLight = ChristmasLights()
+        christmasLight.toggle(1,1,2,2)
+        var result = christmasLight.grid
+        assertEquals(arrayOf(arrayOf("off","off","off"),
+                             arrayOf("off","on","on"),
+                             arrayOf("off","on","on")), result)
     }
 }

@@ -3,12 +3,39 @@
  */
 package christmas.lights.app
 
-import christmas.lights.utilities.StringUtils
+class ChristmasLights () {
+    var grid = arrayOf(arrayOf("off","off","off"), arrayOf("off","off","off"), arrayOf("off","off","off"))
+    var encendido = "on"
+    var apagado = "off"
 
-import org.apache.commons.text.WordUtils
+    override fun toString(): String {
+        var result = ""
+        for (i in grid.indices) {
+           result += grid[i].joinToString(separator = ",") + "\n"
+        }
+            return result
+        }
+
+    fun toggle(fila1: Int, columna1: Int, fila2: Int, columna2: Int){
+        for (i in grid.indices){
+            for(j in grid.indices){
+                // println("${i}, ${j}")
+                if(i >= fila1 && i <= fila2){
+                    if(j >= columna1 && j <= columna2){
+                        if(grid[i][j] == "off"){
+                            grid[i][j] = "on"
+                        } else if (grid[i][j] == "on"){
+                            grid[i][j] = "off"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 fun main() {
-    val tokens = StringUtils.split(MessageUtils.getMessage())
-    val result = StringUtils.join(tokens)
-    println(WordUtils.capitalize(result))
+    var christmasLights = ChristmasLights()
+    println(christmasLights)
+    christmasLights.toggle(1,1, 2, 2)
 }
